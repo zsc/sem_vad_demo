@@ -1,0 +1,1 @@
+从 https://github.com/pipecat-ai/smart-turn https://huggingface.co/pipecat-ai/smart-turn-v3 总结出示例代码，用于一个 silero vad 再级联语义 vad(smart-turn) 的 python + html demo。为这个 demo 生成可送给 gemini-cli / codex 的 SPEC markdown（包含上面的调用示例）。我有 huggingface pro 会员并且已经在命令行登陆了。
