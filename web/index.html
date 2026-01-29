@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Silero + Smart Turn Demo</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Real-time turn detection</p>
+          <h1>Silero VAD + Smart Turn</h1>
+          <p class="subtitle">
+            Speak into your mic, pause naturally, and watch semantic end-of-turn detection decide when your
+            turn is done.
+          </p>
+        </div>
+        <div class="controls">
+          <button id="toggleBtn" class="primary">Start</button>
+          <div class="status">
+            <span class="dot" id="statusDot"></span>
+            <span id="statusText">Idle</span>
+          </div>
+        </div>
+      </header>
+
+      <main class="grid">
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Silero VAD</h2>
+            <span class="pill" id="vadState">silence</span>
+          </div>
+          <div class="metrics">
+            <div>
+              <span class="label">p(speech)</span>
+              <span class="value" id="vadProb">0.00</span>
+            </div>
+            <div>
+              <span class="label">silence</span>
+              <span class="value" id="vadSilence">0 ms</span>
+            </div>
+            <div>
+              <span class="label">turn length</span>
+              <span class="value" id="turnMs">0 ms</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="smartPanel">
+          <div class="panel-header">
+            <h2>Smart Turn</h2>
+            <span class="pill" id="stDecision">waiting</span>
+          </div>
+          <div class="metrics">
+            <div>
+              <span class="label">end</span>
+              <span class="value" id="stEnd">0.00</span>
+            </div>
+            <div>
+              <span class="label">continue</span>
+              <span class="value" id="stContinue">0.00</span>
+            </div>
+            <div>
+              <span class="label">latency</span>
+              <span class="value" id="stLatency">0 ms</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel chart-panel">
+          <div class="panel-header">
+            <h2>Realtime VAD</h2>
+            <span class="pill">signals</span>
+          </div>
+          <div class="chart-block">
+            <div class="chart-label">Silero p(speech)</div>
+            <canvas id="chartSilero" width="520" height="120"></canvas>
+          </div>
+          <div class="chart-block">
+            <div class="chart-label">Smart Turn end prob</div>
+            <canvas id="chartSmartTurn" width="520" height="120"></canvas>
+          </div>
+          <div class="chart-block">
+            <div class="chart-label">Input Spectrum</div>
+            <canvas id="chartSpectrum" width="520" height="140"></canvas>
+          </div>
+        </section>
+
+        <section class="panel log-panel">
+          <div class="panel-header">
+            <h2>Log</h2>
+            <span class="pill" id="logHint">ready</span>
+          </div>
+          <div id="log" class="log"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
